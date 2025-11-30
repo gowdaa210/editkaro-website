@@ -160,17 +160,20 @@ Thanks,
     ];
 
     // Example items. Replace `videoUrl` with a YouTube/Vimeo link or path to an MP4 in your repo.
-    const ITEMS = [
-      {id:1,title:'Reel: Cinematic Product',cat:'Short Form',thumb:'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=dQw4w9WgXcQ'},
-      {id:2,title:'YouTube Episode 1',cat:'Long Form',thumb:'https://via.placeholder.com/400x240?text=Long+Form',videoUrl:'#'},
-      {id:3,title:'Gaming Montage',cat:'Gaming Videos',thumb:'https://via.placeholder.com/400x240?text=Gaming',videoUrl:'#'},
-      {id:4,title:'Football Montage',cat:'Football Edits',thumb:'https://via.placeholder.com/400x240?text=Football',videoUrl:'#'},
-      {id:5,title:'Product Ad — 15s',cat:'eCommerce Ads',thumb:'https://via.placeholder.com/400x240?text=Ad',videoUrl:'#'},
-      {id:6,title:'Short Doc Teaser',cat:'Documentary Style',thumb:'https://via.placeholder.com/400x240?text=Doc',videoUrl:'#'},
-      {id:7,title:'Color Grade Reel',cat:'Color Grading',thumb:'https://via.placeholder.com/400x240?text=Color',videoUrl:'#'},
-      {id:8,title:'Anime Edit',cat:'Anime Videos',thumb:'https://via.placeholder.com/400x240?text=Anime',videoUrl:'#'},
-      {id:9,title:'Commercial Spot',cat:'Ads',thumb:'https://via.placeholder.com/400x240?text=Commercial',videoUrl:'#'}
-    ];
+    // Example items. Replace `videoUrl` with a YouTube/Vimeo link or path to an MP4 in your repo.
+const ITEMS = [
+  {id:1,title:'Reel: Cinematic Product',cat:'Short Form',thumb:'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=dQw4w9WgXcQ'},
+  {id:2,title:'YouTube Episode 1',cat:'Long Form',thumb:'https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=9bZkp7q19f0'},
+  {id:3,title:'Gaming Montage',cat:'Gaming Videos',thumb:'https://img.youtube.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=3JZ_D3ELwOQ'},
+  {id:4,title:'Football Montage',cat:'Football Edits',thumb:'https://img.youtube.com/vi/l482T0yNkeo/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=l482T0yNkeo'},
+  {id:5,title:'Product Ad — 15s',cat:'eCommerce Ads',thumb:'https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=kJQP7kiw5Fk'},
+  {id:6,title:'Short Doc Teaser',cat:'Documentary Style',thumb:'https://img.youtube.com/vi/2Vv-BfVoq4g/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=2Vv-BfVoq4g'},
+  // <-- item 7: replace the videoUrl with a VALID YouTube link or remove this item.
+  {id:7,title:'Color Grade Reel',cat:'Color Grading',thumb:'https://img.youtube.com/vi/2vjPBrBU-TM/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=2vjPBrBU-TM'},
+  {id:8,title:'Anime Edit',cat:'Anime Videos',thumb:'https://img.youtube.com/vi/o1tj2zJ2Wvg/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=o1tj2zJ2Wvg'},
+  {id:9,title:'Commercial Spot',cat:'Ads',thumb:'https://img.youtube.com/vi/tVj0ZTS4WF4/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=tVj0ZTS4WF4'}
+];
+];
 
     // DOM refs
     const tabsEl = document.getElementById('tabs');
@@ -221,37 +224,89 @@ Thanks,
     }
 
     // Lightbox / player
-    function openPlayer(item){
-      const overlay = document.createElement('div');
-      overlay.style.position='fixed';overlay.style.inset=0;overlay.style.background='rgba(2,6,10,0.8)';overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex=9999;
-      const box = document.createElement('div');box.style.width='90%';box.style.maxWidth='980px';box.style.background='#041020';box.style.padding='12px';box.style.borderRadius='12px';box.style.boxShadow='0 10px 40px rgba(0,0,0,0.6)';
+    // Lightbox / player
+function openPlayer(item){
+  const overlay = document.createElement('div');
+  overlay.style.position='fixed';overlay.style.inset=0;overlay.style.background='rgba(2,6,10,0.8)';
+  overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex=9999;
 
-      const title = document.createElement('div');title.style.color='#fff';title.style.fontWeight=700;title.style.marginBottom='8px';title.textContent = item.title;
-      const iframeWrap = document.createElement('div');
-      iframeWrap.style.position='relative';iframeWrap.style.paddingTop='56.25%';iframeWrap.style.height=0;
+  const box = document.createElement('div');
+  box.style.width='90%';box.style.maxWidth='980px';box.style.background='#041020';
+  box.style.padding='12px';box.style.borderRadius='12px';box.style.boxShadow='0 10px 40px rgba(0,0,0,0.6)';
+
+  const title = document.createElement('div');title.style.color='#fff';title.style.fontWeight=700;title.style.marginBottom='8px';
+  title.textContent = item.title;
+
+  const contentWrap = document.createElement('div');
+  contentWrap.style.position='relative';
+  contentWrap.style.paddingTop='56.25%';
+  contentWrap.style.height = 0;
+
+  function appendPlayer(el){
+    el.style.position='absolute';
+    el.style.top = 0;
+    el.style.left = 0;
+    el.style.width = '100%';
+    el.style.height = '100%';
+    el.style.border = '0';
+    el.style.borderRadius = '6px';
+    contentWrap.appendChild(el);
+  }
+
+  const url = (item.videoUrl || '').trim();
+
+  if(url && url !== '#'){
+    if(url.includes('youtube.com') || url.includes('youtu.be')){
+      let id = '';
+      if(url.includes('v=')) id = url.split('v=')[1].split('&')[0];
+      else id = url.split('/').pop();
       const iframe = document.createElement('iframe');
-      iframe.style.position='absolute';iframe.style.top=0;iframe.style.left=0;iframe.style.width='100%';iframe.style.height='100%';iframe.style.border='0';
-
-      // If the url is a youtube link, convert to embed. If it's '#', show a placeholder message.
-      if(item.videoUrl && item.videoUrl.includes('youtube.com')){
-        const id = item.videoUrl.split('v=')[1] || item.videoUrl.split('/').pop();
-        iframe.src = 'https://www.youtube.com/embed/' + id + '?rel=0&modestbranding=1';
-      } else if(item.videoUrl && item.videoUrl.includes('vimeo.com')){
-        const id = item.videoUrl.split('/').pop();
-        iframe.src = 'https://player.vimeo.com/video/' + id;
-      } else if(item.videoUrl && item.videoUrl.endsWith('.mp4')){
-        const vid = document.createElement('video'); vid.src = item.videoUrl; vid.controls=true; vid.style.width='100%'; vid.style.height='100%'; vid.style.borderRadius='6px';
-        iframeWrap.appendChild(vid);
-      } else {
-        const msg = document.createElement('div'); msg.className='muted'; msg.style.padding='28px'; msg.textContent='Video URL not set — replace ITEMS[...] videoUrl with a YouTube/Vimeo link or an mp4 path in the script.';
-        iframeWrap.appendChild(msg);
-      }
-
-      iframeWrap.appendChild(iframe);
-      const close = document.createElement('button'); close.textContent='Close'; close.style.marginTop='10px'; close.onclick = () => document.body.removeChild(overlay);
-      box.appendChild(title); box.appendChild(iframeWrap); box.appendChild(close);
-      overlay.appendChild(box); document.body.appendChild(overlay);
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?rel=0&modestbranding=1';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      appendPlayer(iframe);
+    } else if(url.includes('vimeo.com')){
+      const id = url.split('/').pop();
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://player.vimeo.com/video/' + id;
+      iframe.allowFullscreen = true;
+      appendPlayer(iframe);
+    } else if(url.endsWith('.mp4')){
+      const vid = document.createElement('video');
+      vid.src = url;
+      vid.controls = true;
+      vid.style.background = '#000';
+      appendPlayer(vid);
+    } else {
+      const iframe = document.createElement('iframe');
+      iframe.src = url;
+      iframe.allowFullscreen = true;
+      appendPlayer(iframe);
     }
+  } else {
+    const msg = document.createElement('div');
+    msg.className = 'muted';
+    msg.style.padding = '28px';
+    msg.style.position = 'relative';
+    msg.style.height = '160px';
+    msg.style.display = 'flex';
+    msg.style.alignItems = 'center';
+    msg.style.justifyContent = 'center';
+    msg.textContent = 'Video URL not set — replace ITEMS[...] videoUrl with a YouTube/Vimeo link or an mp4 path in the script.';
+    contentWrap.appendChild(msg);
+  }
+
+  const close = document.createElement('button');
+  close.textContent='Close';
+  close.style.marginTop='10px';
+  close.onclick = () => document.body.removeChild(overlay);
+
+  box.appendChild(title);
+  box.appendChild(contentWrap);
+  box.appendChild(close);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+}
 
     // Basic routing for hash links
     function route(){
@@ -273,3 +328,4 @@ Thanks,
   </script>
 </body>
 </html>
+
