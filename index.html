@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Editkaro.in — Portfolio & About</title>
+  <meta name="description" content="Editkaro.in — social media marketing & video editing agency portfolio and about page (single-file site ready for GitHub Pages)." />
+  <style>
+    :root{--accent:#ff6b6b;--bg:#0f1720;--card:#0b1220;--muted:#9aa4b2}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071022 0%, #0b1220 100%);color:#e6eef6;-webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ffb86b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#10202a}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.active{color:#fff}
+    .hero{display:flex;gap:24px;align-items:center;margin-top:26px}
+    .hero-left{flex:1}
+    .hero-right{width:320px}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin-top:6px}
+
+    /* Tabs */
+    .tabs{display:flex;gap:8px;margin:28px 0}
+    .tab{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;cursor:pointer;color:var(--muted)}
+    .tab.active{background:rgba(255,255,255,0.04);color:#fff;border-color:rgba(255,255,255,0.09)}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .thumb{width:100%;height:140px;border-radius:8px;object-fit:cover;background:#031021;display:block}
+    .meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+    .meta .title{font-weight:700}
+    .meta .cat{font-size:12px;color:var(--muted)}
+
+    /* About */
+    .about{margin-top:26px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:18px;border-radius:12px}
+    .columns{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .team{display:flex;flex-direction:column;gap:12px}
+    .member{display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,#7ef9a4,#6bd1ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#043036}
+    .muted{color:var(--muted)}
+
+    footer{margin-top:36px;color:var(--muted);text-align:center;font-size:14px}
+
+    /* Responsive */
+    @media(max-width:880px){.columns{grid-template-columns:1fr}.hero{flex-direction:column}.hero-right{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">EK</div>
+        <div>
+          <strong>Editkaro.in</strong>
+          <div class="muted" style="font-size:12px">Social media marketing & video editing</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#portfolio" id="nav-portfolio" class="active">Portfolio</a>
+        <a href="#about" id="nav-about">About</a>
+        <a href="#contact" id="nav-contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-left">
+          <h1>Showcasing our best video edits — short form to documentary.</h1>
+          <p class="lead">Browse categories or click any video to open it. Replace the sample thumbnails & video links with your actual files (YouTube/Vimeo/MP4) — ready to drop into a GitHub Pages repo.</p>
+        </div>
+        <div class="hero-right">
+          <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">
+            <strong>Quick stats</strong>
+            <div class="muted" style="margin-top:8px">Projects: <strong id="stat-projects">128</strong></div>
+            <div class="muted">Clients: <strong id="stat-clients">42</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio -->
+      <section id="portfolio" style="margin-top:18px">
+        <div class="tabs" id="tabs"></div>
+        <div class="grid" id="gallery"></div>
+      </section>
+
+      <!-- About -->
+      <section id="about" style="margin-top:18px;display:none">
+        <div class="about">
+          <div class="columns">
+            <div>
+              <h2>About Editkaro.in</h2>
+              <p class="muted">Editkaro.in is a creative video editing and social media marketing agency focused on storytelling, high-impact visuals and growth-driven content for creators and brands.</p>
+
+              <h3 style="margin-top:14px">Mission</h3>
+              <p class="muted">To help creators and brands tell their stories with cinematic edits and data-driven distribution that grows audiences and converts viewers into customers.</p>
+
+              <h3 style="margin-top:12px">Vision</h3>
+              <p class="muted">To be the go-to video partner for creators and SMEs looking to scale on social platforms with consistent, premium content.</p>
+
+              <h3 style="margin-top:12px">Services</h3>
+              <ul class="muted">
+                <li>Short-form vertical edits (Reels, Shorts, TikTok)</li>
+                <li>Long-form YouTube editing</li>
+                <li>Gaming highlight reels</li>
+                <li>Football edits & sports montages</li>
+                <li>Product/eCommerce ads</li>
+                <li>Documentary-style storytelling & color grading</li>
+              </ul>
+
+              <h3 style="margin-top:12px">Contact</h3>
+              <p class="muted">Email: <strong>hello@editkaro.in</strong> — replace with your real address.</p>
+            </div>
+
+            <aside>
+              <h3>Team</h3>
+              <div class="team">
+                <div class="member"><div class="avatar">YP</div><div><strong>Yashu P.</strong><div class="muted">Founder / Creative Director</div></div></div>
+                <div class="member"><div class="avatar">AR</div><div><strong>Ashwin R.</strong><div class="muted">Head of Editing</div></div></div>
+                <div class="member"><div class="avatar">SM</div><div><strong>Sana M.</strong><div class="muted">Colorist / Motion Designer</div></div></div>
+              </div>
+
+              <div style="margin-top:14px">
+                <strong>Follow</strong>
+                <div class="muted" style="margin-top:8px">Instagram • YouTube • LinkedIn</div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:18px;display:none">
+        <div class="about">
+          <h2>Contact</h2>
+          <p class="muted">Want to work with us? Send a quick email to <strong>hello@editkaro.in</strong> or use the template below when you email:</p>
+          <pre class="muted" style="background:rgba(255,255,255,0.02);padding:10px;border-radius:8px">Subject: Video Editing Inquiry
+Hi Editkaro team,
+
+I am [Name], I need [short description of work], timeline [X], budget [₹/USD]. Please let me know availability.
+
+Thanks,
+[Name]
+</pre>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Editkaro.in — Made with care. Replace content & links with your assets before publishing.
+    </footer>
+  </div>
+
+  <script>
+    // --- Data: replace these sample items with real video URLs or thumbnail paths ---
+    const CATEGORIES = [
+      'Short Form','Long Form','Gaming Videos','Football Edits','eCommerce Ads','Documentary Style','Color Grading','Anime Videos','Ads'
+    ];
+
+    // Example items. Replace `videoUrl` with a YouTube/Vimeo link or path to an MP4 in your repo.
+    const ITEMS = [
+      {id:1,title:'Reel: Cinematic Product',cat:'Short Form',thumb:'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg',videoUrl:'https://www.youtube.com/watch?v=dQw4w9WgXcQ'},
+      {id:2,title:'YouTube Episode 1',cat:'Long Form',thumb:'https://via.placeholder.com/400x240?text=Long+Form',videoUrl:'#'},
+      {id:3,title:'Gaming Montage',cat:'Gaming Videos',thumb:'https://via.placeholder.com/400x240?text=Gaming',videoUrl:'#'},
+      {id:4,title:'Football Montage',cat:'Football Edits',thumb:'https://via.placeholder.com/400x240?text=Football',videoUrl:'#'},
+      {id:5,title:'Product Ad — 15s',cat:'eCommerce Ads',thumb:'https://via.placeholder.com/400x240?text=Ad',videoUrl:'#'},
+      {id:6,title:'Short Doc Teaser',cat:'Documentary Style',thumb:'https://via.placeholder.com/400x240?text=Doc',videoUrl:'#'},
+      {id:7,title:'Color Grade Reel',cat:'Color Grading',thumb:'https://via.placeholder.com/400x240?text=Color',videoUrl:'#'},
+      {id:8,title:'Anime Edit',cat:'Anime Videos',thumb:'https://via.placeholder.com/400x240?text=Anime',videoUrl:'#'},
+      {id:9,title:'Commercial Spot',cat:'Ads',thumb:'https://via.placeholder.com/400x240?text=Commercial',videoUrl:'#'}
+    ];
+
+    // DOM refs
+    const tabsEl = document.getElementById('tabs');
+    const galleryEl = document.getElementById('gallery');
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    // Build tabs
+    function buildTabs(){
+      tabsEl.innerHTML = '';
+      const allBtn = document.createElement('button');
+      allBtn.className = 'tab active';
+      allBtn.textContent = 'All';
+      allBtn.onclick = () => {setActiveTab('All')};
+      tabsEl.appendChild(allBtn);
+
+      CATEGORIES.forEach(c => {
+        const b = document.createElement('button');
+        b.className = 'tab';
+        b.textContent = c;
+        b.onclick = () => setActiveTab(c);
+        tabsEl.appendChild(b);
+      });
+    }
+
+    function setActiveTab(cat){
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      Array.from(document.querySelectorAll('.tab')).find(t=>t.textContent===cat).classList.add('active');
+      renderGallery(cat);
+    }
+
+    function renderGallery(cat='All'){
+      const items = (cat==='All') ? ITEMS : ITEMS.filter(i=>i.cat===cat);
+      galleryEl.innerHTML = '';
+      if(items.length===0){galleryEl.innerHTML='<div class="muted">No items in this category yet — add some to the ITEMS array in the script.</div>';return}
+      items.forEach(it=>{
+        const c = document.createElement('div'); c.className='card';
+        const thumb = document.createElement('img'); thumb.className='thumb'; thumb.src = it.thumb; thumb.alt = it.title;
+        thumb.onclick = ()=> openPlayer(it);
+        c.appendChild(thumb);
+        const meta = document.createElement('div'); meta.className='meta';
+        const t = document.createElement('div'); t.className='title'; t.textContent = it.title;
+        const catEl = document.createElement('div'); catEl.className='cat'; catEl.textContent = it.cat;
+        meta.appendChild(t); meta.appendChild(catEl);
+        c.appendChild(meta);
+        galleryEl.appendChild(c);
+      });
+    }
+
+    // Lightbox / player
+    function openPlayer(item){
+      const overlay = document.createElement('div');
+      overlay.style.position='fixed';overlay.style.inset=0;overlay.style.background='rgba(2,6,10,0.8)';overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex=9999;
+      const box = document.createElement('div');box.style.width='90%';box.style.maxWidth='980px';box.style.background='#041020';box.style.padding='12px';box.style.borderRadius='12px';box.style.boxShadow='0 10px 40px rgba(0,0,0,0.6)';
+
+      const title = document.createElement('div');title.style.color='#fff';title.style.fontWeight=700;title.style.marginBottom='8px';title.textContent = item.title;
+      const iframeWrap = document.createElement('div');
+      iframeWrap.style.position='relative';iframeWrap.style.paddingTop='56.25%';iframeWrap.style.height=0;
+      const iframe = document.createElement('iframe');
+      iframe.style.position='absolute';iframe.style.top=0;iframe.style.left=0;iframe.style.width='100%';iframe.style.height='100%';iframe.style.border='0';
+
+      // If the url is a youtube link, convert to embed. If it's '#', show a placeholder message.
+      if(item.videoUrl && item.videoUrl.includes('youtube.com')){
+        const id = item.videoUrl.split('v=')[1] || item.videoUrl.split('/').pop();
+        iframe.src = 'https://www.youtube.com/embed/' + id + '?rel=0&modestbranding=1';
+      } else if(item.videoUrl && item.videoUrl.includes('vimeo.com')){
+        const id = item.videoUrl.split('/').pop();
+        iframe.src = 'https://player.vimeo.com/video/' + id;
+      } else if(item.videoUrl && item.videoUrl.endsWith('.mp4')){
+        const vid = document.createElement('video'); vid.src = item.videoUrl; vid.controls=true; vid.style.width='100%'; vid.style.height='100%'; vid.style.borderRadius='6px';
+        iframeWrap.appendChild(vid);
+      } else {
+        const msg = document.createElement('div'); msg.className='muted'; msg.style.padding='28px'; msg.textContent='Video URL not set — replace ITEMS[...] videoUrl with a YouTube/Vimeo link or an mp4 path in the script.';
+        iframeWrap.appendChild(msg);
+      }
+
+      iframeWrap.appendChild(iframe);
+      const close = document.createElement('button'); close.textContent='Close'; close.style.marginTop='10px'; close.onclick = () => document.body.removeChild(overlay);
+      box.appendChild(title); box.appendChild(iframeWrap); box.appendChild(close);
+      overlay.appendChild(box); document.body.appendChild(overlay);
+    }
+
+    // Basic routing for hash links
+    function route(){
+      const h = location.hash.replace('#','') || 'portfolio';
+      document.getElementById('portfolio').style.display = (h==='portfolio') ? '' : 'none';
+      document.getElementById('about').style.display = (h==='about') ? '' : 'none';
+      document.getElementById('contact').style.display = (h==='contact') ? '' : 'none';
+      document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+      const navId = 'nav-' + (h==='portfolio'? 'portfolio' : (h==='about'? 'about':'contact'));
+      const el = document.getElementById(navId); if(el) el.classList.add('active');
+    }
+
+    window.addEventListener('hashchange', route);
+    // Init
+    buildTabs(); setActiveTab('All'); route();
+
+    // Small UX: let sites that open index.html directly go to portfolio
+    if(!location.hash) location.hash = '#portfolio';
+  </script>
+</body>
+</html>
